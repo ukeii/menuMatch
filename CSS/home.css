@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --light: #f6f6f9;
+    --primary: #1976D2;
+    --light-primary: #CFE8FF;
+    --grey: #eee;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+    --danger: #D32F2F;
+    --light-danger: #FECDD3;
+    --warning: #FBC02D;
+    --light-warning: #FFF2C6;
+    --success: #388E3C;
+    --light-success: #BBF7D0;
+}
+
+html, body{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+main{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card{
+    display: flex;
+    width: 400px;
+    height: 500px;
+    border-radius: 15px;
+    background-color: pink;
+    margin-bottom: 30px;
+}
+
+.button-swipe{
+    display: flex;
+    height: 75px;
+    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main .button-swipe .button {
+    display: flex;
+    height: 75px;
+    width: 75px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+main .button-swipe .button:hover{
+    scale: 1.1;
+}
+
+main .button-swipe .favorite{
+    height: 60px;
+    width: 60px;
+}
+
+main .button-swipe .dislike .bx{
+    font-size: 3.5rem;
+    color: var(--danger);
+}
+
+main .button-swipe .favorite .bx{
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+main .button-swipe .like .bx{
+    font-size: 3rem;
+    color: var(--success);
+}
+/* ------------------------------------------ */
+/* ------------------------------------------ */
+
+
+@media screen and (max-width: 425px) {
+
+    .card{
+        height: 450px;
+        width: 300px;
+    }
+
+    .button-swipe{
+        width: 250px;
+    }
+}
