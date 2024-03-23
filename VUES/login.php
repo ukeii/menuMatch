@@ -25,7 +25,7 @@
                 <h1>Sign In</h1>
                 <div>Sign In to access to Menu Match</div>
             </div>
-            <form class="login-card-form" action="login_post.php" method="POST">
+            <form class="login-card-form" action="../post/signIn_post.php" method="POST">
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">Person</span>
                     <input type="text" placeholder="Username" id="username" name="username" autofocus required>
@@ -48,6 +48,8 @@
                     $err = $_GET['erreur'];
                     if ($err == 1 || $err == 2)
                         echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
+                    else if ($err == 3)
+                        echo "<p style='color:blue'>Votre compte a bien été crée</p>";
                 }
                 ?>
 
@@ -61,14 +63,18 @@
                 <h1>Sign Up</h1>
                 <div>Sign In to access to Menu Match</div>
             </div>
-            <form class="login-card-form" action="login_post.php" method="POST">
+            <form class="login-card-form" action="../post/signUp_post.php" method="POST">
+                <div class="form-item">
+                    <span class="form-item-icon material-symbols-rounded">email</span>
+                    <input type="text" placeholder="Email" id="email" name="email" autofocus required>
+                </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">Person</span>
-                    <input type="text" placeholder="Username" name="username" autofocus required>
+                    <input type="text" placeholder="Username" id="username" name="username" autofocus required>
                 </div>
                 <div class="form-item">
                     <span class="form-item-icon material-symbols-rounded">lock</span>
-                    <input type="password" placeholder="Password" name="password" required>
+                    <input type="password" placeholder="Password" id="password" name="password" required>
                 </div>
                 <div class="form-item-other">
                     <div class="checkbox">
@@ -77,15 +83,7 @@
                     </div>
                     <a href="#">forgot password ?</a>
                 </div>
-                <button type="submit">Sign In</button>
-
-                <?php
-                if (isset ($_GET['erreur'])) {
-                    $err = $_GET['erreur'];
-                    if ($err == 1 || $err == 2)
-                        echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-                }
-                ?>
+                <button type="submit">Sign Up</button>
 
             </form>
             <div class="login-card-footer">
