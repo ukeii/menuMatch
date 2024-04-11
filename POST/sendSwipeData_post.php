@@ -1,0 +1,45 @@
+<?php
+session_start(); // Assurez-vous que la session est démarrée
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    include 'bdd.php'; // Connexion à votre base de données
+    
+    $cardId = $_POST['cardId'];
+    $action = $_POST['action'];
+    $userId = $_SESSION['userID'];
+
+    // Assurez-vous de valider et de nettoyer $cardId avant de les utiliser dans votre requête
+    // $cardId = votre_fonction_de_nettoyage($cardId);
+
+    // Connexion à la base de données
+    $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
+    
+    if ($conn->connect_error) {
+        die("La connexion a échoué : " . $conn->connect_error);
+    }
+
+    // Insérer dans seenPost indépendamment de l'action
+    $stmt = $conn->prepare("INSERT INTO seenPost (recipeID, userID) VALUES (?, ?)");
+    $stmt->bind_param("ii", $cardId, $userId);
+    $stmt->execute();
+    
+    // Insérer dans likedPost si l'action est un "like"
+    if ($action == 'like') {
+        $stmt = $conn->prepare("INSERT INTO likedPost (recipeID, userID) VALUES (?, ?)");
+        $stmt->bind_param("ii", $cardId, $userId);
+        $stmt->execute();
+    } else if ($action == 'dislike') {
+        $stmt = $conn->prepare("INSERT INTO dislikedPost (recipeID, userID) VALUES (?, ?)");
+        $stmt->bind_param("ii", $cardId, $userId);
+        $stmt->execute();
+    }
+    
+    $stmt->close();
+    $conn->close();
+
+    echo "Succès";
+} else {
+    // Pas une requête POST
+    header('HTTP/1.1 403 Forbidden');
+    echo "Accès refusé.";
+}

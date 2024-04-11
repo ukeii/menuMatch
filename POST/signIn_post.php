@@ -16,8 +16,8 @@ if ($conn->connect_error) {
 // Récupération du username depuis le formulaire
 $user_username = $_POST['username'];
 
-// Préparation de la requête SQL pour obtenir le hash du mot de passe
-$sql = $conn->prepare("SELECT password FROM users WHERE username = ?");
+// Préparation de la requête SQL pour obtenir le hash du mot de passe et le userID
+$sql = $conn->prepare("SELECT userID, password FROM users WHERE username = ?");
 $sql->bind_param("s", $user_username);
 
 // Exécution de la requête
@@ -27,8 +27,10 @@ $result = $sql->get_result();
 if ($row = $result->fetch_assoc()) {
     // Vérification du mot de passe
     if (password_verify($_POST['password'], $row['password'])) {
-        // Le mot de passe est correct
+        // Le mot de passe est correct, on stocke le username et le userID en session
         $_SESSION['username'] = $user_username;
+        $_SESSION['userID'] = $row['userID']; // Rajouter l'userID en session
+
         header("Location: ../vues/home.php"); // Redirection vers la page d'accueil
     } else {
         // Le mot de passe est incorrect
@@ -36,10 +38,10 @@ if ($row = $result->fetch_assoc()) {
     }
 } else {
     // Le username n'existe pas
-    header("Location: ../vues/login.php?erreur=1"); // Redirection avec un code d'erreur pour username non trouvé
+    header("Location: ../vues/login.php?erreur=2"); // Redirection avec un code d'erreur pour username non trouvé
 }
 
 // Fermeture de la déclaration et de la connexion
 $sql->close();
 $conn->close();
-?>
+

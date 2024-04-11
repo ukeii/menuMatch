@@ -15,34 +15,158 @@
     --light-success: #BBF7D0;
 }
 
-html, body{
+html,
+body {
     display: flex;
     height: 100%;
     width: 100%;
     margin: 0;
 }
 
-main{
+main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-.card{
+.card {
     display: flex;
     width: 400px;
     height: 500px;
     border-radius: 15px;
     background-color: pink;
     margin-bottom: 30px;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.button-swipe{
+.card:not(:first-of-type) {
+    display: none;
+}
+
+.card-header {
+    display: flex;
+    width: 100%;
+    height: 50%;
+    border-radius: 15px 15px 0 0;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+
+.card-header .options {
+    display: flex;
+    z-index: 5;
+    position: absolute;
+    top: 10px;
+    right: 5px;
+    color: var(--light);
+    cursor: pointer;
+}
+
+.card-header .report{
+    display: none;
+    position: absolute;
+    z-index: 5;
+    width: 100px;
+    font-size: smaller;
+    top: 10px;
+    right: 25px;
+    background-color: rgba(105, 105, 105, 0.74);
+    border-radius: 10px;
+    align-items: center;
+}
+
+.card-header .report i{
+    margin-right: 5px;
+}
+
+.card-body {
+    display: flex;
+    width: 100%;
+    height: 40%;
+    flex-direction: column;
+}
+
+.card-body .rating {
+    display: flex;
+    margin-left: 10px;
+    align-items: center;
+}
+
+.card-body .rating i {
+    color: red;
+}
+
+.card-body span,
+.card-body h3 {
+    margin: 10px 0 0 10px;
+}
+
+.card-footer {
+    display: flex;
+    width: 100%;
+    height: 10%;
+    border-radius: 0 0 15px 15px;
+}
+
+
+.button-18 {
+    margin-left: 10px;
+    align-items: center;
+    background-color: #e09320;
+    border: 0;
+    border-radius: 100px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto, "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell, "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 20px;
+    max-height: 40px;
+    max-width: 400px;
+    min-height: 40px;
+    min-width: 0px;
+    overflow: hidden;
+    padding: 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    touch-action: manipulation;
+    transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s, color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+    user-select: none;
+    -webkit-user-select: none;
+    vertical-align: middle;
+}
+
+.button-18:hover,
+.button-18:focus {
+    background-color: #b97003;
+    color: #ffffff;
+}
+
+.button-18:active {
+    background: #09223b;
+    color: rgb(255, 255, 255, .7);
+}
+
+.button-18:disabled {
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, .08);
+    color: rgba(0, 0, 0, .3);
+}
+
+.button-swipe {
     display: flex;
     height: 75px;
     width: 300px;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 main .button-swipe .button {
@@ -52,44 +176,46 @@ main .button-swipe .button {
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    background-color: var(--light-primary);
+    border: 2px solid var(--dark);
 }
 
-main .button-swipe .button:hover{
+main .button-swipe .button:hover {
     scale: 1.1;
 }
 
-main .button-swipe .favorite{
+main .button-swipe .favorite {
     height: 60px;
     width: 60px;
 }
 
-main .button-swipe .dislike .bx{
+main .button-swipe .dislike .bx {
     font-size: 3.5rem;
     color: var(--danger);
 }
 
-main .button-swipe .favorite .bx{
+main .button-swipe .favorite .bx {
     font-size: 2rem;
     color: var(--primary);
 }
 
-main .button-swipe .like .bx{
+main .button-swipe .like .bx {
     font-size: 3rem;
     color: var(--success);
 }
+
 /* ------------------------------------------ */
 /* ------------------------------------------ */
 
 
 @media screen and (max-width: 425px) {
 
-    .card{
+    .card {
         height: 450px;
         width: 300px;
     }
 
-    .button-swipe{
+    .button-swipe {
         width: 250px;
     }
 }
