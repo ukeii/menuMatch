@@ -25,11 +25,40 @@
         <!-- End of Navbar -->
 
         <main>
-            <div class="profile banner"></div>
-            <div class="statistic banner"></div>
+            <div class="profile-banner">
+                <div class="left-container">
+                    <div class="profile-picture"></div>
+                </div>
+                <div class="right-container">
+                    <div class="header-container">
+                        <span>ugo_mrl</span>
+                    </div>
+                    <div class="statistic-container">
+                        <ul>
+                            <li><span>2</span> publications</li>
+                            <li><span>800</span> likes</li>
+                            <li><span>300</span> followers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="profile-menu">
+                <ul>
+                    <li <?php if (strpos($_SERVER['PHP_SELF'], 'profile.php') !== false)
+                        echo 'class="active"'; ?>>
+                        <a href="profile.php"><i class='bx bx-grid'></i>Mes publications</a>
+                    </li>
+                    <li <?php if (strpos($_SERVER['PHP_SELF'], 'profile-favorites.php') !== false)
+                        echo 'class="active"'; ?>>
+                        <a href="profile-favorites.php"><i class='bx bx-star'></i>Mes favoris</a>
+                    </li>
+                    <li <?php if (strpos($_SERVER['PHP_SELF'], 'profile-choices.php') !== false)
+                        echo 'class="active"'; ?>>
+                        <a href="profile-choices.php"><i class='bx bx-heart'></i>Mes choix</a>
+                    </li>
+                </ul>
+            </div>
             <!-- Profile Post-->
-            <div class="user-statistic"></div>
-            <div class="new-post"></div>
             <div class="user-post"></div>
         </main>
 
