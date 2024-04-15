@@ -3,7 +3,7 @@ session_start(); // Assurez-vous que la session est démarrée
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     include 'bdd.php'; // Connexion à votre base de données
-    
+
     $cardId = $_POST['cardId'];
     $action = $_POST['action'];
     $userId = $_SESSION['userID'];
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Connexion à la base de données
     $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
-    
+
     if ($conn->connect_error) {
         die("La connexion a échoué : " . $conn->connect_error);
     }
@@ -22,18 +22,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conn->prepare("INSERT INTO seenPost (recipeID, userID) VALUES (?, ?)");
     $stmt->bind_param("ii", $cardId, $userId);
     $stmt->execute();
-    
+
     // Insérer dans likedPost si l'action est un "like"
     if ($action == 'like') {
-        $stmt = $conn->prepare("INSERT INTO likedPost (recipeID, userID) VALUES (?, ?)");
-        $stmt->bind_param("ii", $cardId, $userId);
-        $stmt->execute();
+        // Mise à jour du nombre de likes pour la recette spécifiée
+        $updateStmt = $conn->prepare("UPDATE recipe SET likes = likes + 1 WHERE recipeID = ?");
+        $updateStmt->bind_param("i", $cardId);
+        $updateStmt->execute();
+        $updateStmt->close();
+
+        // Insertion dans la table likedPost
+        $insertStmt = $conn->prepare("INSERT INTO likedPost (recipeID, userID) VALUES (?, ?)");
+        $insertStmt->bind_param("ii", $cardId, $userId);
+        $insertStmt->execute();
+        $insertStmt->close();
     } else if ($action == 'dislike') {
         $stmt = $conn->prepare("INSERT INTO dislikedPost (recipeID, userID) VALUES (?, ?)");
         $stmt->bind_param("ii", $cardId, $userId);
         $stmt->execute();
     }
-    
+
     $stmt->close();
     $conn->close();
 

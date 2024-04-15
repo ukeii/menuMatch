@@ -25,18 +25,19 @@ body {
 
 main {
     width: 100%;
+    min-width: 800px;
     height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: top;
+    z-index: 1;
 }
 
 .profile-banner{
     display: flex;
+    z-index: 5;
     min-width: 800px;
-    max-width: 1000px;
     min-height: 240px;
-    max-height: 240px;
     justify-content: space-between;
     align-items: center;
 }
@@ -72,6 +73,16 @@ main {
     display: flex;
     width: 100%;
     height: 40%;
+    justify-content: space-between;
+}
+
+.profile-banner .right-container .header-container button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 15px;
 }
 
 .profile-banner .right-container .statistic-container{
@@ -141,6 +152,50 @@ main {
     display: flex;
     margin-top: 20px;
     width: 800px;
-    height: 500px;
-    background-color: pink;
+    height: auto;
+}
+
+.post{
+    position: relative;
+    display: flex;
+    width: 266px;
+    height: 266px;
+    margin-right: 1px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.post:hover::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.4);
+    pointer-events: none; 
+}
+
+.postStatistic{
+    display: none;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+}
+
+.post:hover .postStatistic{
+    display: flex;
+}
+
+
+.postStatistic .bx{
+    font-size: 50px;
 }

@@ -7,7 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../css/navBar.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <title>Popular</title>
+    <title>Research</title>
 </head>
 
 <body>
