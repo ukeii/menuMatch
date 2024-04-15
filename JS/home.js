@@ -45,7 +45,51 @@ $(function () {
             });
         }
     });
+    // Gestion du clic sur le bouton "like"
+    $('.button.like').on('click', function() {
+        var $currentCard = $('.card:visible').first();
+        $currentCard.animate({
+            left: '+=150'  // Déplace la carte vers la droite
+        }, 200, function() {
+            sendSwipeData($currentCard.attr('id').split('-')[1], 'like');
+            $currentCard.hide('slow', function() {
+                $(this).remove();
+                showNextCard();
+            });
+        });
+    });
+
+    // Gestion du clic sur le bouton "dislike"
+    $('.button.dislike').on('click', function() {
+        var $currentCard = $('.card:visible').first();
+        $currentCard.animate({
+            left: '-=150'  // Déplace la carte vers la gauche
+        }, 200, function() {
+            sendSwipeData($currentCard.attr('id').split('-')[1], 'dislike');
+            $currentCard.hide('slow', function() {
+                $(this).remove();
+                showNextCard();
+            });
+        });
+    });
+
+    // Gestion du clic sur le bouton "favorite"
+    $('.button.favorite').on('click', function() {
+        var $currentCard = $('.card:visible').first();
+        $currentCard.animate({
+            left: '+=150'  // Déplace la carte vers la gauche
+        }, 200, function() {
+            sendSwipeData($currentCard.attr('id').split('-')[1], 'favorite');
+            $currentCard.hide('slow', function() {
+                $(this).remove();
+                showNextCard();
+            });
+        });
+    });
+    
 });
+
+
 
 function sendSwipeData(cardId, action) {
     $.ajax({

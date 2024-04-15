@@ -40,6 +40,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $conn->prepare("INSERT INTO dislikedPost (recipeID, userID) VALUES (?, ?)");
         $stmt->bind_param("ii", $cardId, $userId);
         $stmt->execute();
+    } else if ($action == 'favorite') {
+        // Mise à jour du nombre de likes pour la recette spécifiée
+        $updateStmt = $conn->prepare("UPDATE recipe SET likes = likes + 1 WHERE recipeID = ?");
+        $updateStmt->bind_param("i", $cardId);
+        $updateStmt->execute();
+        $updateStmt->close();
+
+        // Insertion dans la table likedPost
+        $insertStmt = $conn->prepare("INSERT INTO likedPost (recipeID, userID) VALUES (?, ?)");
+        $insertStmt->bind_param("ii", $cardId, $userId);
+        $insertStmt->execute();
+        $insertStmt->close();
+
+        // Insertion dans la table likedPost
+        $insertStmt = $conn->prepare("INSERT INTO favoritesPost (recipeID, userID) VALUES (?, ?)");
+        $insertStmt->bind_param("ii", $cardId, $userId);
+        $insertStmt->execute();
+        $insertStmt->close();
     }
 
     $stmt->close();

@@ -46,9 +46,9 @@
                 </div>
             <?php endforeach; ?>
             <div class="button-swipe">
-                <div class="button dislike"><i class='bx bx-x'></i></div>
-                <div class="button favorite"><i class='bx bxs-star'></i></div>
-                <div class="button like"><i class='bx bxs-heart'></i></div>
+                <div class="button dislike" id="dislike"><i class='bx bx-x'></i></div>
+                <div class="button favorite" id="favorite"><i class='bx bxs-star'></i></div>
+                <div class="button like" id="like"><i class='bx bxs-heart'></i></div>
             </div>
         </main>
 
