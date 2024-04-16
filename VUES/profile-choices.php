@@ -36,9 +36,56 @@
                     </div>
                     <div class="statistic-container">
                         <ul>
-                            <li><span>2</span> publications</li>
-                            <li><span>800</span> likes</li>
-                            <li><span>300</span> followers</li>
+                            <li>
+                                <span>
+                                    <?php
+                                    session_start();
+                                    include '../POST/bdd.php';
+                                    $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
+                                    if ($conn->connect_error) {
+                                        die("La connexion a échoué : " . $conn->connect_error);
+                                    }
+                                    $stmt = $conn->prepare("SELECT COUNT(*) as numPublications FROM recipe WHERE creatorID = ?");
+                                    $stmt->bind_param("i", $_SESSION['userID']);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                                    $count = $row['numPublications'];
+                                    echo $count;
+                                    $stmt->close();
+                                    $conn->close();
+                                    ?>
+                                </span> publications
+                            </li>
+                            <li>
+                                <span>
+                                    <?php
+                                    session_start();
+                                    include '../POST/bdd.php';
+
+                                    $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
+                                    if ($conn->connect_error) {
+                                        die("La connexion a échoué : " . $conn->connect_error);
+                                    }
+
+                                    $stmt = $conn->prepare("SELECT SUM(likes) as numLikes FROM recipe WHERE creatorID = ?");
+                                    $stmt->bind_param("i", $_SESSION['userID']);
+                                    $stmt->execute();
+                                    $result = $stmt->get_result();
+                                    $row = $result->fetch_array(MYSQLI_ASSOC);
+                                    $totalLikes = $row['numLikes'] ? $row['numLikes'] : 0;
+                                    echo $totalLikes;
+                                    $stmt->close();
+                                    $conn->close();
+                                    ?>
+
+                                </span> likes
+                            </li>
+                            <li>
+                                <span>
+                                    300
+                                </span> followers
+                            </li>
                         </ul>
                     </div>
                 </div>
