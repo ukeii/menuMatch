@@ -167,6 +167,7 @@ main {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    z-index: 1;
 }
 
 .post:hover::before{
@@ -191,11 +192,25 @@ main {
     width: 100%;
 }
 
-.post:hover .postStatistic{
+.post:hover .postStatistic, .post:hover .deleteFavorite{
     display: flex;
 }
 
 
 .postStatistic .bx{
     font-size: 50px;
+}
+
+.deleteFavorite{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    color: red;
+    font-weight: bold;
+}
+
+.deleteFavorite:hover{
+    color: rgb(237, 63, 63);
 }

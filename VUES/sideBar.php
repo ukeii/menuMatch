@@ -12,10 +12,6 @@
             echo 'class="active"'; ?>>
             <a href="calendar.php"><i class='bx bx-calendar'></i>Calendar</a>
         </li>
-        <li <?php if (strpos($_SERVER['PHP_SELF'], 'popular.php') !== false)
-            echo 'class="active"'; ?>>
-            <a href="research.php"><i class='bx bx-search'></i>Research</a>
-        </li>
         <li <?php if (strpos($_SERVER['PHP_SELF'], 'shopping.php') !== false)
             echo 'class="active"'; ?>>
             <a href="shopping.php"><i class='bx bx-shopping-bag'></i>Shopping</a>

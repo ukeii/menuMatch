@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --light: #f6f6f9;
+    --primary: #1976D2;
+    --light-primary: #CFE8FF;
+    --grey: #eee;
+    --dark-grey: #AAAAAA;
+    --dark: #363949;
+    --danger: #D32F2F;
+    --light-danger: #FECDD3;
+    --warning: #FBC02D;
+    --light-warning: #FFF2C6;
+    --success: #388E3C;
+    --light-success: #BBF7D0;
+}
+
+html,
+body {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+main {
+    width: 100%;
+    min-width: 800px;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    z-index: 1;
+}
+
+.shoppingBox {
+    display: flex;
+    min-width: 800px;
+    height: auto;
+    border-radius: 15px;
+    padding: 25px;
+    background-color: #363949;
+    flex-direction: column;
+}
+
+.ingredientBox{
+    display: flex;
+    width: 100%;
+    height: 40px;
+}
+
+.ingredientBox .leftContainer{
+    display: flex;
+    width: 40px;
+    height: 40px;
+    background-size: contain;
+    background-position: center;
+    margin-right: 20px;
+}
+
+.ingredientBox .rightContainer{
+    display: flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+}
