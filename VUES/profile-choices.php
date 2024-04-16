@@ -62,23 +62,24 @@
             <!-- Profile Post-->
             <div class="choiceContainer">
                 <?php include '../POST/fetch_choice.php'; ?>
-
                 <?php
                 $choices = fetchLikedAndDislikedRecipes();
                 foreach ($choices as $choice) {
-                    echo '<div class="choiceRow">';
+                    echo '<div class="choiceRow" data-id="' . htmlspecialchars($choice["recipeID"]) . '">';
                     echo '<div class="leftContainer" style="background-image: url(\'' . htmlspecialchars($choice["posterPath"]) . '\');"></div>';
-                    echo '<div class="rightContainer">' . htmlspecialchars($choice["name"]) . '</div>';
+                    echo '<div class="rightContainer">' . htmlspecialchars($choice["name"]) . '<div class="deleteChoice"><i class="bx bx-trash" onclick="deleteFavorite(' . htmlspecialchars($choice["recipeID"]) . ')"></i></div></div>';
                     echo '</div>';
                 }
                 ?>
             </div>
+
     </div>
     </main>
 
     </div>
 
     <script src="../js/navBar.js"></script>
+    <script src="../js/profile.js"></script>
 </body>
 
 </html>
