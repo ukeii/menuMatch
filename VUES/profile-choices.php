@@ -25,6 +25,7 @@
         <!-- End of Navbar -->
 
         <main>
+            <?php session_start() ?>
             <div class="profile-banner">
                 <div class="left-container">
                     <div class="profile-picture"></div>
@@ -59,9 +60,21 @@
                 </ul>
             </div>
             <!-- Profile Post-->
-            <div class="new-post"></div>
-            <div class="user-post"></div>
-        </main>
+            <div class="choiceContainer">
+                <?php include '../POST/fetch_choice.php'; ?>
+
+                <?php
+                $choices = fetchLikedAndDislikedRecipes();
+                foreach ($choices as $choice) {
+                    echo '<div class="choiceRow">';
+                    echo '<div class="leftContainer" style="background-image: url(\'' . htmlspecialchars($choice["posterPath"]) . '\');"></div>';
+                    echo '<div class="rightContainer">' . htmlspecialchars($choice["name"]) . '</div>';
+                    echo '</div>';
+                }
+                ?>
+            </div>
+    </div>
+    </main>
 
     </div>
 

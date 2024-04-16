@@ -26,6 +26,7 @@
 
         <main>
             <div class="calendarBox" id="calendarBox">
+
                 <?php include '../POST/fetch_weekly_recipe.php'; ?>
 
                 <?php

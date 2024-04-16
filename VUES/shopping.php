@@ -34,13 +34,13 @@
                 foreach ($ingredients as $ingredient) {
                     echo '<div class="ingredientBox">';
                     echo '<div class="leftContainer" style="background-image: url(\'' . htmlspecialchars($ingredient["posterPath"]) . '\');"></div>';
-                    echo '<div class="rightContainer">'. htmlspecialchars($ingredient["name"]) . htmlspecialchars($ingredient["ingredientID"]) . '</div>';
+                    echo '<div class="rightContainer">' . htmlspecialchars($ingredient["name"]) . '</div>';
                     echo '</div>';
                 }
                 ?>
             </div>
-            </div>
-        </main>
+    </div>
+    </main>
 
     </div>
 

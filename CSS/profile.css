@@ -33,7 +33,7 @@ main {
     z-index: 1;
 }
 
-.profile-banner{
+.profile-banner {
     display: flex;
     z-index: 5;
     min-width: 800px;
@@ -42,7 +42,7 @@ main {
     align-items: center;
 }
 
-.profile-banner .left-container{
+.profile-banner .left-container {
     display: flex;
     height: 100%;
     width: 30%;
@@ -51,7 +51,7 @@ main {
     align-items: center;
 }
 
-.profile-banner .left-container .profile-picture{
+.profile-banner .left-container .profile-picture {
     display: flex;
     width: 200px;
     height: 200px;
@@ -61,7 +61,7 @@ main {
     background-size: cover;
 }
 
-.profile-banner .right-container{
+.profile-banner .right-container {
     display: flex;
     height: 80px;
     width: 65%;
@@ -69,7 +69,7 @@ main {
     justify-content: space-between;
 }
 
-.profile-banner .right-container .header-container{
+.profile-banner .right-container .header-container {
     display: flex;
     width: 100%;
     height: 40%;
@@ -85,20 +85,20 @@ main {
     border-radius: 15px;
 }
 
-.profile-banner .right-container .statistic-container{
+.profile-banner .right-container .statistic-container {
     display: flex;
     width: 100%;
     height: 40%;
 }
 
-.profile-banner .right-container .header-container span{
+.profile-banner .right-container .header-container span {
     display: flex;
     color: var(--dark);
     font-weight: bold;
-    font-size:x-large;
+    font-size: x-large;
 }
 
-.profile-banner .right-container .statistic-container span{
+.profile-banner .right-container .statistic-container span {
     font-weight: bold;
 }
 
@@ -110,7 +110,7 @@ main {
     margin-right: 40px;
 }
 
-.profile-menu{
+.profile-menu {
     display: flex;
     height: auto;
     min-width: 800px;
@@ -120,14 +120,14 @@ main {
     border-top: 1px solid grey;
 }
 
-.profile-menu ul{
+.profile-menu ul {
     display: flex;
     height: auto;
     justify-content: center;
     align-items: center;
 }
 
-.profile-menu li{
+.profile-menu li {
     display: inline;
     height: auto;
     margin-right: 40px;
@@ -135,27 +135,27 @@ main {
     padding-top: 10px;
 }
 
-.profile-menu li a{
+.profile-menu li a {
     text-decoration: none;
     color: rgb(170, 167, 167);
 }
 
-.profile-menu li.active{
+.profile-menu li.active {
     border-top: 1px solid var(--dark);
 }
 
-.profile-menu li.active a{
+.profile-menu li.active a {
     color: var(--dark);
 }
 
-.user-post{
+.user-post {
     display: flex;
     margin-top: 20px;
     width: 800px;
     height: auto;
 }
 
-.post{
+.post {
     position: relative;
     display: flex;
     width: 266px;
@@ -170,18 +170,18 @@ main {
     z-index: 1;
 }
 
-.post:hover::before{
+.post:hover::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.4);
-    pointer-events: none; 
+    background-color: rgba(0, 0, 0, 0.4);
+    pointer-events: none;
 }
 
-.postStatistic{
+.postStatistic {
     display: none;
     color: white;
     font-size: 40px;
@@ -192,16 +192,17 @@ main {
     width: 100%;
 }
 
-.post:hover .postStatistic, .post:hover .deleteFavorite{
+.post:hover .postStatistic,
+.post:hover .deleteFavorite {
     display: flex;
 }
 
 
-.postStatistic .bx{
+.postStatistic .bx {
     font-size: 50px;
 }
 
-.deleteFavorite{
+.deleteFavorite {
     display: none;
     position: absolute;
     z-index: 2;
@@ -211,6 +212,39 @@ main {
     font-weight: bold;
 }
 
-.deleteFavorite:hover{
+.deleteFavorite:hover {
     color: rgb(237, 63, 63);
+}
+
+.choiceContainer {
+    display: flex;
+    margin-top: 20px;
+    width: 800px;
+    height: 100%;
+    flex-direction: column;
+}
+
+.choiceRow{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.choiceRow .leftContainer{
+    display: flex;
+    width: 200px;
+    height: 100px;
+    background-size: cover;
+    background-position: center;
+    margin-right: 20px;
+}
+
+.choiceRow .rightContainer{
+    display: flex;
+    width: 100%;
+    height: 100px;
+    align-items: center;
+    color: var(--dark);
+    align-items: center;
 }
