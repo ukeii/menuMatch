@@ -1,7 +1,7 @@
 <?php 
 function fetchIngredients() {
     session_start();
-    include 'bdd.php'; // Assurez-vous que ce fichier contient les bonnes informations de connexion
+    include 'bdd.php';
     $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
     
     if ($conn->connect_error) {
@@ -19,7 +19,6 @@ function fetchIngredients() {
     $recipeIDs = [];
 
     while ($row = $result1->fetch_assoc()) {
-        // Ajout de tous les IDs de recettes des jours de la semaine au tableau recipeIDs
         foreach ($row as $dayRecipeID) {
             $recipeIDs[] = $dayRecipeID;
         }
@@ -36,17 +35,17 @@ function fetchIngredients() {
         $result2 = $stmt2->get_result();
 
         while ($row = $result2->fetch_assoc()) {
-            $ingredientIDs = explode(',', $row['ingredientID']); // Convertit la chaîne en tableau
-            $allIngredientIDs = array_merge($allIngredientIDs, $ingredientIDs); // Ajoute les IDs au tableau total
+            $ingredientIDs = explode(',', $row['ingredientID']);
+            $allIngredientIDs = array_merge($allIngredientIDs, $ingredientIDs);
         }
     }
     $stmt2->close();
 
     // Troisième requête pour obtenir tous les détails des ingrédients
     if (count($allIngredientIDs) > 0) {
-        $inQuery = implode(',', array_fill(0, count($allIngredientIDs), '?')); // Crée une chaîne de placeholders
+        $inQuery = implode(',', array_fill(0, count($allIngredientIDs), '?'));
         $stmt3 = $conn->prepare("SELECT * FROM ingredients WHERE ingredientID IN ($inQuery)");
-        $stmt3->bind_param(str_repeat('i', count($allIngredientIDs)), ...$allIngredientIDs); // Lie chaque ID comme un paramètre entier
+        $stmt3->bind_param(str_repeat('i', count($allIngredientIDs)), ...$allIngredientIDs);
         $stmt3->execute();
         $result3 = $stmt3->get_result();
 

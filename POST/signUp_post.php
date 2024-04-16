@@ -10,7 +10,6 @@ if ($conn->connect_error) {
     die("Échec de la connexion: " . $conn->connect_error);
 }
 
-// Récupérez les valeurs du formulaire
 $email = $_POST['email'];
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -30,7 +29,6 @@ if ($stmt->execute()) {
     echo "Erreur: " . $stmt->error;
 }
 
-// Fermeture de la déclaration et de la connexion
 $stmt->close();
 $conn->close();
 ?>

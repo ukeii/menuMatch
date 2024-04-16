@@ -50,7 +50,6 @@ function deleteChoice(postId) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Use the `choiceRow` class and `data-id` attribute for selecting the element to remove
             document.querySelector('.choiceRow[data-id="' + postId + '"]').remove();
         } else {
             alert("Erreur lors de la suppression du favori.");

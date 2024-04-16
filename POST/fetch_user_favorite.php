@@ -1,7 +1,7 @@
 <?php
 function fetchUserRecipes() {
     session_start();
-    include 'bdd.php';  // Assurez-vous que les détails de connexion sont corrects et sécurisés.
+    include 'bdd.php'; 
     $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
     
     if ($conn->connect_error) {
@@ -17,7 +17,6 @@ function fetchUserRecipes() {
     
     $recipes = [];
     while ($row = $result->fetch_assoc()) {
-        // Pour chaque recipeID récupéré, effectuer une deuxième requête pour obtenir les détails de la recette.
         $recipeID = $row['recipeID'];
         $stmt2 = $conn->prepare("SELECT * FROM recipe WHERE recipeID = ?");
         $stmt2->bind_param("i", $recipeID);
@@ -25,7 +24,7 @@ function fetchUserRecipes() {
         $result2 = $stmt2->get_result();
         
         if ($recipeDetails = $result2->fetch_assoc()) {
-            $recipes[] = $recipeDetails; // Ajouter les détails de la recette au tableau.
+            $recipes[] = $recipeDetails;
         }
         $stmt2->close();
     }
@@ -33,6 +32,6 @@ function fetchUserRecipes() {
     $stmt->close();
     $conn->close();
     
-    return $recipes; // Retourner les recettes favorisées avec leurs détails complets.
+    return $recipes;
 }
 

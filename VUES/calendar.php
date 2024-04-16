@@ -35,23 +35,20 @@
                 $days = ['monday', 'thursday', 'tuesday', 'wednesday', 'friday', 'saturday', 'sunday'];
 
                 foreach ($days as $day) {
-                    // Vérifier si des données existent pour le jour spécifique
                     if (isset($weeklyRecipes[$day])) {
                         $recipe = $weeklyRecipes[$day];
                         echo '<div class="dayContainer">';
                         echo '<div class="day" id="' . htmlspecialchars($recipe['recipeID']) . '">';
-                        echo '<h3>' . htmlspecialchars($day) . '</h3>'; // Affiche le nom du jour
+                        echo '<h3>' . htmlspecialchars($day) . '</h3>';
                         if (is_array($recipe)) {
-                            // Afficher le nom de la recette si les détails de la recette sont disponibles
                             echo '<h4>' . htmlspecialchars($recipe['name']) . '</h4>';
                             echo '<button onclick="viewMore(this)"';
                             echo ' data-name="' . htmlspecialchars($recipe['name']) . '"';
                             echo ' data-description="' . htmlspecialchars($recipe['description']) . '"';
                             echo ' data-origine="' . htmlspecialchars($recipe['origine']) . '"';
-                            echo ' data-other="' . htmlspecialchars($recipe['otherDetail']) . '">View More</button>'; // Ajoutez autant de détails que nécessaire
+                            echo ' data-other="' . htmlspecialchars($recipe['otherDetail']) . '">View More</button>';
                 
                         } else {
-                            // Afficher un message si aucune recette n'est disponible pour ce jour
                             echo '<p>' . htmlspecialchars($recipe) . '</p>';
                         }
                         echo '</div>';

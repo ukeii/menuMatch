@@ -21,11 +21,11 @@ $(function () {
         revertDuration: 200,
         stop: function (event, ui) {
             let change = ui.position.left;
-            let cardId = this.id.split('-')[1]; // Extrait l'ID de la recette à partir de l'ID de la carte
+            let cardId = this.id.split('-')[1];
 
-            if (change > 100) { // Swipe vers la droite pour "like"
+            if (change > 100) {
                 sendSwipeData(cardId, 'like');
-            } else if (change < -100) { // Swipe vers la gauche pour "dislike"
+            } else if (change < -100) {
                 sendSwipeData(cardId, 'dislike');
             }
 
@@ -39,7 +39,6 @@ $(function () {
                 if ($nextCard.length) {
                     $nextCard.show('slow');
                 } else {
-                    // Peut-être afficher un message si il n'y a plus de cartes
                     console.log("plus de cartes")
                 }
             });
@@ -49,7 +48,7 @@ $(function () {
     $('.button.like').on('click', function() {
         var $currentCard = $('.card:visible').first();
         $currentCard.animate({
-            left: '+=150'  // Déplace la carte vers la droite
+            left: '+=150' 
         }, 200, function() {
             sendSwipeData($currentCard.attr('id').split('-')[1], 'like');
             $currentCard.hide('slow', function() {
@@ -63,7 +62,7 @@ $(function () {
     $('.button.dislike').on('click', function() {
         var $currentCard = $('.card:visible').first();
         $currentCard.animate({
-            left: '-=150'  // Déplace la carte vers la gauche
+            left: '-=150'
         }, 200, function() {
             sendSwipeData($currentCard.attr('id').split('-')[1], 'dislike');
             $currentCard.hide('slow', function() {
@@ -77,7 +76,7 @@ $(function () {
     $('.button.favorite').on('click', function() {
         var $currentCard = $('.card:visible').first();
         $currentCard.animate({
-            left: '+=150'  // Déplace la carte vers la gauche
+            left: '+=150'
         }, 200, function() {
             sendSwipeData($currentCard.attr('id').split('-')[1], 'favorite');
             $currentCard.hide('slow', function() {
@@ -93,17 +92,17 @@ $(function () {
 
 function sendSwipeData(cardId, action) {
     $.ajax({
-        url: '../POST/sendSwipeData_post.php', // Remplacez par le chemin vers votre script PHP
+        url: '../POST/sendSwipeData_post.php', 
         type: 'POST',
         data: {
             cardId: cardId,
             action: action
         },
         success: function(response) {
-            console.log(response); // Traitement en cas de succès
+            console.log(response);
         },
         error: function(xhr, status, error) {
-            console.error(error); // Traitement en cas d'erreur
+            console.error(error);
         }
     });
 }

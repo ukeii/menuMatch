@@ -1,15 +1,12 @@
 <?php
-session_start(); // Assurez-vous que la session est démarrée
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include 'bdd.php'; // Connexion à votre base de données
+    include 'bdd.php';
 
     $cardId = $_POST['cardId'];
     $action = $_POST['action'];
     $userId = $_SESSION['userID'];
-
-    // Assurez-vous de valider et de nettoyer $cardId avant de les utiliser dans votre requête
-    // $cardId = votre_fonction_de_nettoyage($cardId);
 
     // Connexion à la base de données
     $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
@@ -25,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Insérer dans likedPost si l'action est un "like"
     if ($action == 'like') {
-        // Mise à jour du nombre de likes pour la recette spécifiée
         $updateStmt = $conn->prepare("UPDATE recipe SET likes = likes + 1 WHERE recipeID = ?");
         $updateStmt->bind_param("i", $cardId);
         $updateStmt->execute();
@@ -65,7 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     echo "Succès";
 } else {
-    // Pas une requête POST
     header('HTTP/1.1 403 Forbidden');
     echo "Accès refusé.";
 }

@@ -16,7 +16,6 @@ function fetchWeeklyRecipes() {
 
     $weeklyRecipes = [];
     if ($row = $result->fetch_assoc()) {
-        // Récupérer les détails des recettes pour chaque jour
         $days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
         foreach ($days as $day) {
             $recipeID = $row[$day];

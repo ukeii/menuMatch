@@ -73,10 +73,10 @@ window.addEventListener('DOMContentLoaded', () => {
 toggler.addEventListener('change', function () {
     if (this.checked) {
         body.classList.add('dark');
-        localStorage.setItem('darkMode', 'true'); // Enregistrer l'état
+        localStorage.setItem('darkMode', 'true');
     } else {
         body.classList.remove('dark');
-        localStorage.setItem('darkMode', 'false'); // Enregistrer l'état
+        localStorage.setItem('darkMode', 'false');
     }
 });
 
@@ -90,8 +90,6 @@ document.getElementById("logoutBtn").addEventListener("click", function () {
 
 // Confirmer la déconnexion
 document.getElementById("confirmLogout").addEventListener("click", function () {
-    // Mettez ici le code pour effectuer la déconnexion
-    // Par exemple, redirigez l'utilisateur vers la page de connexion
     window.location.href = "../post/logout.php";
 });
 

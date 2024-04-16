@@ -1,5 +1,5 @@
 <?php
-include 'bdd.php'; // Connexion à la base de données
+include 'bdd.php';
 $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
 
 if ($conn->connect_error) {
@@ -7,7 +7,7 @@ if ($conn->connect_error) {
     exit;
 }
 
-header('Content-Type: application/json'); // Assurez-vous que la sortie est de type JSON
+header('Content-Type: application/json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
     $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_NUMBER_INT);

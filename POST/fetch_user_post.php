@@ -10,7 +10,7 @@ function fetchUserPosts() {
     }
 
     $userID = $_SESSION['userID'];
-    $stmt = $conn->prepare("SELECT * FROM recipe WHERE creatorID = ?");  // Assurez-vous que le nom de la table et la colonne sont corrects
+    $stmt = $conn->prepare("SELECT * FROM recipe WHERE creatorID = ?"); 
     $stmt->bind_param("i", $userID);
     $stmt->execute();
     $result = $stmt->get_result();

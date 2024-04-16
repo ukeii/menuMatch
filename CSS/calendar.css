@@ -45,7 +45,6 @@ main {
 .dayContainer {
     display: flex;
     flex: 0 0 33.33%;
-    /* Ne grandit pas, ne rétrécit pas, et prend 33.33% de la ligne */
     box-sizing: border-box;
     justify-content: center;
     align-items: center;

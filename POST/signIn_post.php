@@ -3,7 +3,7 @@
 session_start();
 
 // Connexion à la base de données
-include 'bdd.php'; // Assurez-vous que ce fichier définit les variables $servername, $dbUsername, $dbPassword, et $dbname
+include 'bdd.php';
 
 // Création de la connexion
 $conn = new mysqli($servername, $dbUsername, $dbPassword, $dbname);
@@ -27,21 +27,18 @@ $result = $sql->get_result();
 if ($row = $result->fetch_assoc()) {
     // Vérification du mot de passe
     if (password_verify($_POST['password'], $row['password'])) {
-        // Le mot de passe est correct, on stocke le username et le userID en session
         $_SESSION['username'] = $user_username;
-        $_SESSION['userID'] = $row['userID']; // Rajouter l'userID en session
+        $_SESSION['userID'] = $row['userID'];
 
-        header("Location: ../vues/home.php"); // Redirection vers la page d'accueil
+        header("Location: ../vues/home.php");
     } else {
-        // Le mot de passe est incorrect
-        header("Location: ../vues/login.php?erreur=1"); // Redirection avec un code d'erreur pour mot de passe incorrect
+        header("Location: ../vues/login.php?erreur=1");
     }
 } else {
     // Le username n'existe pas
-    header("Location: ../vues/login.php?erreur=2"); // Redirection avec un code d'erreur pour username non trouvé
+    header("Location: ../vues/login.php?erreur=2");
 }
 
-// Fermeture de la déclaration et de la connexion
 $sql->close();
 $conn->close();
 
